@@ -78,21 +78,18 @@ public class HealthDiagnosisSimulator {
         }
         //Explore left and right from the found index
         int left = foundIndex;
-        int right = foundIndex;
+        int right = foundIndex + 1;
 
         //Move left to find other matches
         while(left >= 0 && diseases[left].severity == patientSeverity){
+            result.add(diseases[left]);
             left--;
         }
 
         //Move right to find other matches
         while(right < diseases.length && diseases[right].severity == patientSeverity){
+            result.add(diseases[right]);
             right++;
-        }
-
-        //Add all matches to result (from left+1 to right-1)
-        for(int i = left + 1; i < right; i++){
-            result.add(diseases[i]);
         }
 
         return result; //no match
